@@ -13,17 +13,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Vérifier la structure du repo
+        run: ls -R
+
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.cle_careplant }}
+          ssh-private-key: ${{ secrets.CLE_CAREPLANT }}
 
-      - name: Build the project
+      - name: Installer les dépendances et build
         run: |
-          npm install
+          cd careplant_front  # Se déplacer dans le bon dossier
+          ls -R               # Vérifier que les fichiers sont bien là
+          npm install --production
           npm run build
 
-      - name: Deploy to Hostinger via SCP
+      - name: Déployer sur Hostinger via SCP
         run: |
-          scp -r ./build/* u607780247@147.93.92.1:/home/u607780247/domains/portefolio.avaulleemanonportefolio.fr/public_html/careplantfront
-       
+          scp -r ./careplant_front/build/* u607780247@147.93.92.1:/home/u607780247/domains/portefolio.avaulleemanonportefolio.fr/public_html/careplantfront
