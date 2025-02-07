@@ -23,10 +23,11 @@ jobs:
 
       - name: Installer les dépendances et build
         run: |
-          ls -R         
+          cd careplant_front  # Se déplacer dans le bon dossier
+          ls -R               # Vérifier que les fichiers sont bien là
           npm install --production
           npm run build
 
       - name: Déployer sur Hostinger via SCP
         run: |
-          scp -r ./CarePlant_Frontend/build/* u607780247@147.93.92.1:/home/u607780247/domains/portefolio.avaulleemanonportefolio.fr/public_html/careplantfront
+          scp -r ./careplant_front/build/* u607780247@147.93.92.1:/home/u607780247/domains/portefolio.avaulleemanonportefolio.fr/public_html/careplantfront
