@@ -23,7 +23,7 @@ jobs:
 
       - name: Installer les dépendances et build
         run: |
-          cd CarePlant_Frontend  # Modifie ce chemin si nécessaire !
+          
           npm install --production
           npm run build
 
