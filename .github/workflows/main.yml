@@ -21,12 +21,17 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.CLE_CAREPLANT }}
 
+      
       - name: Installer les dépendances et build
         run: |
           cd careplant_front  # Se déplacer dans le bon dossier
           ls -R               # Vérifier que les fichiers sont bien là
           npm install --production
           npm run build
+
+      - name: Ajouter Hostinger aux hôtes connus
+        run: |
+          ssh-keyscan -p 65002 147.93.92.1 >> ~/.ssh/known_hosts
 
       - name: Déployer sur Hostinger via SCP
         run: |
