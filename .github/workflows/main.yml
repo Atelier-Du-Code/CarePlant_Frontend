@@ -30,4 +30,4 @@ jobs:
 
       - name: Déployer sur Hostinger via SCP
         run: |
-          scp -r ./careplant_front/build/* u607780247@147.93.92.1:/home/u607780247/domains/portefolio.avaulleemanonportefolio.fr/public_html/careplantfront
+          scp -P 65002 -r ./careplant_front/build/* u607780247@147.93.92.1:/home/u607780247/domains/portefolio.avaulleemanonportefolio.fr/public_html/careplantfront
