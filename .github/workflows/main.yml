@@ -21,6 +21,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.CLE_CAREPLANT }}
 
+      - name: Ajouter Hostinger aux hôtes connus
+        run: |
+          ssh-keyscan -p 65002 147.93.92.1 >> ~/.ssh/known_hosts
+
       
       - name: Installer les dépendances et build
         run: |
@@ -29,9 +33,7 @@ jobs:
           npm install --production
           npm run build
 
-      - name: Ajouter Hostinger aux hôtes connus
-        run: |
-          ssh-keyscan -p 65002 147.93.92.1 >> ~/.ssh/known_hosts
+    
 
       - name: Déployer sur Hostinger via SCP
         run: |
