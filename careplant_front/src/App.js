@@ -1,12 +1,14 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home.js';
 
-import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <p>Deployement opérationnel !!!!!</p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />     
+    </Routes>
   );
-}
+};
 
 export default App;
